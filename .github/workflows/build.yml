@@ -83,11 +83,3 @@ jobs:
         path: |
           Ghidra_${{ env.GHIDRA_VERSION }}.zip
           Ghidra_${{ env.GHIDRA_VERSION }}.zip.sha256
-    - name: Release
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: |
-        ls -lah
-        gh release upload v${{ env.GHIDRA_VERSION }} --clobber Ghidra_${{ env.GHIDRA_VERSION }}.zip
-        gh release upload v${{ env.GHIDRA_VERSION }} --clobber Ghidra_${{ env.GHIDRA_VERSION }}.zip.sha256
-        gh release edit v${{ env.GHIDRA_VERSION }} --notes "sha256: \`${{ env.GHIDRA_SHA256 }}\`" 
